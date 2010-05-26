@@ -1,0 +1,21 @@
+rename edit
+===========
+
+Rename edit allows to use your favorite $EDITOR to change filenames.
+
+.Example
+----
+% touch foo.txt bar.txt
+% re -v *
+$EDITOR starts with:
+    # ./
+    0 bar.txt
+    1 foo.txt
+Keep the numbers in front and change the filenames as you like:
+    # ./
+    0 file one.txt
+    1 other file.txt
+Write out the changes, the files are renamed accordingly:
+"foo.txt" -> "other file.txt"
+"bar.txt" -> "file one.txt"
+----

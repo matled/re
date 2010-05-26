@@ -1,0 +1,9 @@
+TODO comments in the script
+
+interactive mode:
+show what would be done and allow the user to apply, abort or edit
+
+hide file extensions
+
+multi directory stuff:
+allow files to be moved to a new/between directory etc
