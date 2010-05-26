@@ -58,7 +58,7 @@ end
 
 class RenameEdit
   DEFAULT_OPTIONS = {
-    :separator => ":",
+    :separator => " ",
     :recursive => false,
     :hide_extension => false,
     :verbose => false,
