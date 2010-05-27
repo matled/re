@@ -7,3 +7,7 @@ hide file extensions
 
 multi directory stuff:
 allow files to be moved to a new/between directory etc
+
+config file
+perhaps similar to the gem config file: just prepend the options specified in
+the file to ARGV.  every option has to have a --no option then.
