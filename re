@@ -240,25 +240,34 @@ if $0 == __FILE__
   require 'optparse'
 
   options = {}
+  option_parser = OptionParser.new do |opts|
+    opts.banner = "Usage: #{File.basename($0)} [options] <files..>"
+
+    opts.on("-v", "--verbose", "verbose output") do |v|
+      options[:verbose] = true
+    end
+
+    opts.on("-r", "--recursive", "walk paths recursively") do |v|
+      options[:recursive] = true
+    end
+
+    opts.on("-s", "--separator SEPARATOR",
+            "separator between index and file") do |v|
+      options[:separator] = v[0..0]
+    end
+  end
+
   begin
-    opt = OptionParser.new do |opts|
-      opts.on("-v", "--verbose", "verbose output") do |v|
-        options[:verbose] = true
-      end
-
-      opts.on("-r", "--recursive", "walk paths recursively") do |v|
-        options[:recursive] = true
-      end
-
-      opts.on("-s", "--separator SEPARATOR",
-              "separator between index and file") do |v|
-        options[:separator] = v[0..0]
-      end
-    end.parse!
+    option_parser.parse!
   rescue OptionParser::ParseError
     warn $!.message
     exit 1
   end
 
-  exit RenameEdit.new(ARGV, options).run unless ARGV.empty?
+  if ARGV.empty?
+    $stderr.puts option_parser.help
+    exit 1
+  end
+
+  exit RenameEdit.new(ARGV, options).run
 end
