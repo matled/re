@@ -83,7 +83,7 @@ class RenameEdit
     end
 
     @nadic = NAdic.new
-    @nadic.pad_for(@files.length - 1)
+    @nadic.pad_for([@files.length - 1, 0].max)
 
     @errors = []
   end
