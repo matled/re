@@ -260,5 +260,5 @@ if $0 == __FILE__
     exit 1
   end
 
-  exit RenameEdit.new(ARGV, options).run
+  exit RenameEdit.new(ARGV, options).run unless ARGV.empty?
 end
