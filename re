@@ -112,16 +112,23 @@ class RenameEdit
   end
 
   def escape(s)
-    if s =~ /\A"|\n/
-      s.inspect
-    else
-      s
+    s.gsub(/\n|\\/) do |c|
+      case c
+      when "\n" then "\\n"
+      when "\\" then "\\\\"
+      else c
+      end
     end
   end
 
   def unescape(s)
-    # TODO: if s starts with " use eval, use the correct scope!
-    s
+    s.gsub(/\\\\|\\n/) do |str|
+      case str
+      when "\\\\" then "\\"
+      when "\\n" then "\n"
+      else c
+      end
+    end
   end
 
   def split_extension(str)
